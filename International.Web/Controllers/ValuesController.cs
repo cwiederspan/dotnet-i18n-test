@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Localization;
-
+﻿using International.Common.Localization;
 using International.Common.Messaging;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace International.Web.Controllers {
 
@@ -9,18 +9,18 @@ namespace International.Web.Controllers {
     [ApiController]
     public class ValuesController : ControllerBase {
 
-        private readonly IStringLocalizer<Messages> MessageLocalizer;
+        private readonly ILocalizer Localizer;
 
         public ValuesController(
-            IStringLocalizer<Messages> messageLocalizer
+            ILocalizer localizer
         ) {
             // Save for later use
-            this.MessageLocalizer = messageLocalizer;
+            this.Localizer = localizer;
         }
 
         [HttpGet]
         public string Get() {
-            return this.MessageLocalizer["Value"];
+            return this.Localizer["Value"];
         }
     }
 }

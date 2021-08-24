@@ -5,11 +5,13 @@ using System.Globalization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
-
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+
+using International.Common.Localization;
+using International.Common.Messaging;
 
 namespace International.Web {
 
@@ -23,10 +25,10 @@ namespace International.Web {
 
         public void ConfigureServices(IServiceCollection services) {
 
-            //services.AddLocalization(options => {
-            //    options.ResourcesPath = "Localization";
-            //});
+            // Setup the bindings
+            services.AddSingleton<ILocalizer, Messages>();
 
+            // Setup Localization
             services.AddLocalization();
 
             services.Configure<RequestLocalizationOptions>(options => {
@@ -37,7 +39,7 @@ namespace International.Web {
                 };
 
                 options.DefaultRequestCulture = new RequestCulture(
-                    culture: "en-US", 
+                    culture: "en-US",
                     uiCulture: "en-US"
                 );
 
@@ -54,6 +56,7 @@ namespace International.Web {
             var localizationOptions = app
                 .ApplicationServices
                 .GetService<IOptions<RequestLocalizationOptions>>();
+
             app.UseRequestLocalization(localizationOptions.Value);
 
             if (env.IsDevelopment()) {
