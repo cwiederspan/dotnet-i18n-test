@@ -1,7 +1,6 @@
-﻿using International.Common.Localization;
-using International.Common.Messaging;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Localization;
+﻿using Microsoft.AspNetCore.Mvc;
+
+using International.Common.Localization;
 
 namespace International.Web.Controllers {
 
