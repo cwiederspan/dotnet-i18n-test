@@ -23,9 +23,11 @@ namespace International.Web {
 
         public void ConfigureServices(IServiceCollection services) {
 
-            services.AddLocalization(options => {
-                options.ResourcesPath = "Localization";
-            });
+            //services.AddLocalization(options => {
+            //    options.ResourcesPath = "Localization";
+            //});
+
+            services.AddLocalization();
 
             services.Configure<RequestLocalizationOptions>(options => {
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
-using International.Common;
+using International.Common.Messaging;
 
 namespace International.Web.Controllers {
 

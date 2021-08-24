@@ -1,6 +1,7 @@
 ﻿using System;
+using Microsoft.Extensions.Localization;
 
-namespace International.Common {
+namespace International.Common.Messaging {
 
     public class Messages {
         
